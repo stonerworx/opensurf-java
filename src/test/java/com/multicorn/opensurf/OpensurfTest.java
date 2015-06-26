@@ -18,7 +18,7 @@ public class OpensurfTest {
 
   static {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    System.load("/home/user/app/libs/native/libopensurf_java.so");
+    System.load("/home/user/opensurf-java/libs/native/libopensurf_java.so");
   }
 
   @Test

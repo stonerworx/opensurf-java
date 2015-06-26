@@ -9,6 +9,21 @@ This library is distributed under the GNU GPL.
 
 * Get [Docker](https://www.docker.com/) for your platform.
 
+If you just want to use OpenSURF in Java you can get a pre-built image.
+It includes a working copy of OpenSURF and OpenCV 2.4.11 with Oracle Java 8 and Gradle running
+on Ubuntu Trusty.
+
+* Pull it from the repo
+  <pre>docker pull stonerworx/opensurf-java
+  
+* Or use it in your Dockerfile
+  <pre>FROM stonerworx/opensurf-java
+  
+* The OpenSURF library is located in **/home/user/opensurf-java/build/libs/opensurf-1.0.jar**
+* The OpenCV library is located in **/home/user/opencv/build/bin/opencv-2411.jar**
+
+If you'd like to contribute you can use the Dockerfile to run tests:
+
 * Build the Dockerfile
   <pre>docker build -t opensurf-java .</pre>
   
