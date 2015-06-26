@@ -1,9 +1,9 @@
 group 'com.multicorn.opensurf'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -14,12 +14,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-tasks.withType(Test) {
-    systemProperty "java.library.path", "libs/native"
-}
-
 task buildNative(type:Exec) {
     workingDir 'jni'
+    commandLine 'make clean'
     commandLine 'make'
 }
 

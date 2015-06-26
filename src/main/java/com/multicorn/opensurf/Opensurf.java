@@ -18,11 +18,6 @@ import org.opencv.core.MatOfKeyPoint;
  */
 public class Opensurf {
 
-  static {
-    System.loadLibrary("opencv_java");
-    System.loadLibrary("opensurf");
-  }
-
   /**
    * Detects SURF keypoints in an image.
    *
@@ -33,7 +28,7 @@ public class Opensurf {
    * @param thres
    * @return MatOfKeyPoints with keypoints detected in the image
    */
-  public MatOfKeyPoint detect(Mat imageMat, int octaves, int intervals,
+  public static MatOfKeyPoint detect(Mat imageMat, int octaves, int intervals,
                                      int init_sample, float thres) {
 
     MatOfKeyPoint keyPoints = new MatOfKeyPoint();
@@ -52,7 +47,7 @@ public class Opensurf {
    * @param upright
    * @return Mat with all descriptors
    */
-  public Mat compute(Mat imageMat, MatOfKeyPoint keypoints, boolean upright) {
+  public static Mat compute(Mat imageMat, MatOfKeyPoint keypoints, boolean upright) {
 
     Mat descriptors = new Mat();
 

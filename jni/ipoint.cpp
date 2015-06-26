@@ -53,6 +53,7 @@ void getMatches(IpVec &ipts1, IpVec &ipts2, IpPairVec &matches)
   }
 }
 
+/*
 //
 // This function uses homography with CV_RANSAC (OpenCV 1.1)
 // Won't compile on most linux distributions
@@ -102,4 +103,4 @@ int translateCorners(IpPairVec &matches, const CvPoint src_corners[4], CvPoint d
   return 1;
 }
 
-
+*/

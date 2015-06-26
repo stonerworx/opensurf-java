@@ -38,7 +38,6 @@ JNIEXPORT void JNICALL Java_com_multicorn_opensurf_Opensurf_surflib_1surfDet
   }
 
   vector_KeyPoint_to_Mat(keypoints, *keypointMat);
-
 }
 
 JNIEXPORT void JNICALL Java_com_multicorn_opensurf_Opensurf_surflib_1surfDes
@@ -76,7 +75,6 @@ JNIEXPORT void JNICALL Java_com_multicorn_opensurf_Opensurf_surflib_1surfDes
   }
 
   *descriptorMat = *descriptors;
-
 }
 
 void Mat_to_vector_KeyPoint(cv::Mat& mat, std::vector<cv::KeyPoint>& v_kp) {

@@ -5,7 +5,17 @@ This library is distributed under the GNU GPL.
 
 **Supports detection of SURF keypoints and computation of descriptors.**
 
-## Installation
+## The easy way - use Docker
+
+* Get [Docker](https://www.docker.com/) for your platform.
+
+* Build the Dockerfile
+  <pre>docker build -t opensurf-java .</pre>
+  
+* Run the test
+  <pre>docker run opensurf-java gradle test</pre>
+
+## The slightly more difficult way
 
 Requires [OpenCV](http://opencv.org/) to be installed.
 
@@ -16,20 +26,20 @@ Requires [OpenCV](http://opencv.org/) to be installed.
 
 ### Mac OS X
  
-* Copy the **libopencv_java2411.dylib** file in */opt/local/share/OpenCV/java* to your *java.library.path* and rename it to **libopencv_java.dylib**
+* Copy the **libopencv_java2411.dylib** file in */opt/local/share/OpenCV/java* to your *java.library.path*
  
-* Build the native library *(You may need to edit some paths in the Makefile)*
+* Build the native library *(Use the makefile.mac - You may need to edit some paths in the Makefile)*
   <pre>
   cd jni<br />
   make
   </pre>
  
-* Copy the **libopensurf.dylib** file in *libs/native* to your *java.library.path*
+* Copy the **libopensurf_java.dylib** file in *libs/native* to your *java.library.path*
 
 * Build the project
   <pre>gradle build</pre>
 
-* Add **opensurf-1.0-SNAPSHOT.jar** as a dependency in your project
+* Add **opensurf-1.0.jar** as a dependency in your project
 
 ### Android (Android Studio)
 
@@ -50,7 +60,7 @@ Requires the [Android NDK](https://developer.android.com/tools/sdk/ndk/index.htm
 * Build the project
   <pre>gradle build</pre>
 
-* Add **opensurf-1.0-SNAPSHOT.jar** as a dependency in your project
+* Add **opensurf-1.0.jar** as a dependency in your project
 
 * See http://stackoverflow.com/a/27421494 for instructions on how to use OpenCV in Android Studio
 
@@ -63,12 +73,9 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfKeyPoint;
 import org.opencv.highgui.Highgui;
 
-
-Opensurf opensurf = new Opensurf();
-
 Mat imageMat = Highgui.imread(getClass().getResource("/test.jpg").getPath());
 
-MatOfKeyPoint keyPoints = opensurf.detect(imageMat, 5, 4, 2, 0.0004f);
+MatOfKeyPoint keyPoints = Opensurf.detect(imageMat, 5, 4, 2, 0.0004f);
 
-Mat descriptors = opensurf.compute(imageMat, keyPoints, true);
+Mat descriptors = Opensurf.compute(imageMat, keyPoints, true);
 </pre>
