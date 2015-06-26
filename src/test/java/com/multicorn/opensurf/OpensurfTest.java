@@ -36,7 +36,7 @@ public class OpensurfTest {
     Mat imageMat = getImage();
 
     MatOfKeyPoint keyPoints = Opensurf.detect(imageMat, 5, 4, 2, 0.0004f);
-    Mat descriptors = Opensurf.compute(imageMat, keyPoints, true);
+    Mat descriptors = Opensurf.describe(imageMat, keyPoints, true);
 
     assertTrue("keyoint and descriptor rows should match",
                keyPoints.rows() == descriptors.rows());

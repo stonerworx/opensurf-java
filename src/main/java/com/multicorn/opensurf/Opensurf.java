@@ -47,7 +47,7 @@ public class Opensurf {
    * @param upright
    * @return Mat with all descriptors
    */
-  public static Mat compute(Mat imageMat, MatOfKeyPoint keypoints, boolean upright) {
+  public static Mat describe(Mat imageMat, MatOfKeyPoint keypoints, boolean upright) {
 
     Mat descriptors = new Mat();
 

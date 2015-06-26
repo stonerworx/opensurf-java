@@ -92,5 +92,5 @@ Mat imageMat = Highgui.imread(getClass().getResource("/test.jpg").getPath());
 
 MatOfKeyPoint keyPoints = Opensurf.detect(imageMat, 5, 4, 2, 0.0004f);
 
-Mat descriptors = Opensurf.compute(imageMat, keyPoints, true);
+Mat descriptors = Opensurf.describe(imageMat, keyPoints, true);
 </pre>
