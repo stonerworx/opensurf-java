@@ -75,3 +75,6 @@ crashlytics.properties
 crashlytics-build.properties
 
 obj/
+
+# Codenny
+.codenvy

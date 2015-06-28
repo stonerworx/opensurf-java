@@ -4,5 +4,5 @@ machine:
     
 test:
   override:
-    - docker built -t opensurf-java .
+    - docker build -t opensurf-java .
     - docker run opensurf-java gradle test
