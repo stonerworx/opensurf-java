@@ -10,6 +10,9 @@ dependencies:
 test:
   override:
     - docker run stonerworx/opensurf-java gradle test
+  post:
+    - docker cp stonerworx/opensurf-java:/home/javalibs $CIRCLE_ARTIFACTS/libs
+    - docker cp stonerworx/opensurf-java:/home/opensurf-java/build/reports $CIRCLE_ARTIFACTS/reports
 
 deployment:
   hub:
@@ -17,7 +20,3 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push stonerworx/opensurf-java
-      
-general:
-  artifacts:
-    - /home/javalibs
