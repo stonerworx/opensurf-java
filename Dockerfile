@@ -2,9 +2,14 @@
 FROM stonerworx/opencv-java
 
 # create the application directory and copy the local files there
-RUN mkdir -p /home/user/opensurf-java
-WORKDIR /home/user/opensurf-java
-COPY ./ /home/user/opensurf-java/
+RUN mkdir -p /home/opensurf-java
+WORKDIR /home/opensurf-java
+COPY ./ /home/opensurf-java/
 
-# copy the opencv jar to our application
-RUN cp /home/user/opencv/build/bin/opencv-2411.jar /home/user/opensurf-java/libs/opencv-2411.jar
+RUN gradle build
+
+#copy native library to java.library.path
+RUN cp /home/opensurf-java/libs/native/libopensurf_java.so /usr/lib
+
+#copy java library
+RUN cp /home/opensurf-java/build/libs/opensurf-1.0.jar /home/javalibs/opensurf-1.0.jar
