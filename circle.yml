@@ -1,16 +1,16 @@
-general:
-  artifacts:
-    - "~/artifacts"
-
 machine:
   services:
     - docker
     
 dependencies:
+  cache_directories:
+    - "~/docker"
   override:
     - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker build -t stonerworx/opensurf-java .
     - CONTAINERID=$(docker run -d stonerworx/opensurf-java /bin/bash -c)
+    - mkdir -p ~/docker; docker save stonerworx/opensurf-java > ~/docker/image.tar
 
 test:
   override:
@@ -19,6 +19,7 @@ test:
     - mkdir -p ~/artifacts
     - docker cp $CONTAINERID:/home/javalibs ~/artifacts/
     - docker cp $CONTAINERID:/home/opensurf-java/build/reports ~/artifacts/
+    - cp ~/artifacts $CIRCLE_ARTIFACTS
 
 deployment:
   hub:
