@@ -19,7 +19,7 @@ test:
     - mkdir -p ~/artifacts
     - docker cp $CONTAINERID:/home/javalibs ~/artifacts/
     - docker cp $CONTAINERID:/home/opensurf-java/build/reports ~/artifacts/
-    - cp ~/artifacts $CIRCLE_ARTIFACTS
+    - cp -r ~/artifacts $CIRCLE_ARTIFACTS
 
 deployment:
   hub:
