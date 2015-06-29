@@ -6,12 +6,14 @@ dependencies:
   override:
     - docker info
     - docker build -t stonerworx/opensurf-java .
+    - CONTAINERID=$(docker run -d stonerworx/opensurf-java /bin/bash -c)
 
 test:
   override:
     - docker run stonerworx/opensurf-java gradle test
-    - docker cp stonerworx/opensurf-java:/home/javalibs $CIRCLE_ARTIFACTS/libs
-    - docker cp stonerworx/opensurf-java:/home/opensurf-java/build/reports $CIRCLE_ARTIFACTS/reports
+  post:
+    - docker cp $CONTAINERID:/home/javalibs $CIRCLE_ARTIFACTS
+    - docker cp $CONTAINERID:/home/opensurf-java/build/reports $CIRCLE_ARTIFACTS
 
 deployment:
   hub:
