@@ -1,5 +1,4 @@
 [![Circle CI](https://circleci.com/gh/stonerworx/opensurf-java.svg?style=svg)](https://circleci.com/gh/stonerworx/opensurf-java)
-
 # opensurf-java
 Simple JNI Wrapper for Chris Evans OpenSURF.<br />
 *(C. Evans, Research Into Robust Visual Features, MSc University of Bristol, 2008.)*<br />
