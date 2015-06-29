@@ -12,8 +12,8 @@ test:
   override:
     - docker run stonerworx/opensurf-java gradle test
   post:
-    - docker cp $CONTAINERID:/home/javalibs $CIRCLE_ARTIFACTS
-    - docker cp $CONTAINERID:/home/opensurf-java/build/reports $CIRCLE_ARTIFACTS
+    - docker cp $CONTAINERID:/home/javalibs $CIRCLE_ARTIFACTS/
+    - docker cp $CONTAINERID:/home/opensurf-java/build/reports $CIRCLE_ARTIFACTS/
 
 deployment:
   hub:
