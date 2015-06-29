@@ -1,3 +1,7 @@
+general:
+  artifacts:
+    - "~/artifacts"
+
 machine:
   services:
     - docker
@@ -12,8 +16,9 @@ test:
   override:
     - docker run stonerworx/opensurf-java gradle test
   post:
-    - docker cp $CONTAINERID:/home/javalibs $CIRCLE_ARTIFACTS/
-    - docker cp $CONTAINERID:/home/opensurf-java/build/reports $CIRCLE_ARTIFACTS/
+    - mkdir -p ~/artifacts
+    - docker cp $CONTAINERID:/home/javalibs ~/artifacts/
+    - docker cp $CONTAINERID:/home/opensurf-java/build/reports ~/artifacts/
 
 deployment:
   hub:
