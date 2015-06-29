@@ -1,4 +1,5 @@
 [![Circle CI](https://circleci.com/gh/stonerworx/opensurf-java.svg?style=svg)](https://circleci.com/gh/stonerworx/opensurf-java)
+
 # opensurf-java
 Simple JNI Wrapper for Chris Evans OpenSURF.<br />
 *(C. Evans, Research Into Robust Visual Features, MSc University of Bristol, 2008.)*<br />
@@ -20,8 +21,8 @@ on Ubuntu Trusty.
 * Or use it in your Dockerfile
   <pre>FROM stonerworx/opensurf-java
   
-* The OpenSURF library is located in **/home/user/opensurf-java/build/libs/opensurf-1.0.jar**
-* The OpenCV library is located in **/home/user/opencv/build/bin/opencv-2411.jar**
+* The OpenSURF library is located in **/home/javalibs/opensurf-1.0.jar**
+* The OpenCV library is located in **/home/javalibs/opencv-2411.jar**
 
 If you'd like to contribute you can use the Dockerfile to run tests:
 
