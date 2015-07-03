@@ -30,7 +30,7 @@ $(LIB): $(LIBOBJS)
 	$(CC) $(LIBOBJS) $(JNILIBS) $(LDLIBS) -o $(LIB) -ldl -shared -fPIC opensurf.cpp
 
 %.o: $(addprefix ./, %.cpp)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(LDLIBS) -c $< -o $@
 
 clean:
 	-rm -f $(PROG)
