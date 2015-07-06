@@ -18,7 +18,7 @@ public class OpensurfTest {
 
   static {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    System.load("/home/opensurf-java/libs/native/libopensurf_java.so");
+    System.load("/Users/dsteiner/private-projects/opensurf-java/libs/native/libopensurf_java.dylib");
   }
 
   @Test
@@ -38,6 +38,23 @@ public class OpensurfTest {
     MatOfKeyPoint keyPoints = Opensurf.detect(imageMat, 5, 4, 2, 0.0004f);
     Mat descriptors = Opensurf.describe(imageMat, keyPoints, true);
 
+    assertTrue("keyoint and descriptor rows should match",
+               keyPoints.rows() == descriptors.rows());
+    assertEquals("descriptor should have 64 cols", 64, descriptors.cols());
+  }
+
+  @Test
+  public void testDetectDescribe() {
+
+    Mat imageMat = getImage();
+
+    MatOfKeyPoint keyPoints = new MatOfKeyPoint();
+    Mat descriptors = new Mat();
+
+    Opensurf.detectDescribe(imageMat, keyPoints, descriptors, 5, 4, 2, 0.0004f, true);
+
+    assertTrue("keypoint mat should have rows", keyPoints.rows() > 0);
+    assertEquals("keypoint mat should one col", 1, keyPoints.cols());
     assertTrue("keyoint and descriptor rows should match",
                keyPoints.rows() == descriptors.rows());
     assertEquals("descriptor should have 64 cols", 64, descriptors.cols());

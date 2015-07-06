@@ -23,6 +23,15 @@ JNIEXPORT void JNICALL Java_com_multicorn_opensurf_Opensurf_surflib_1surfDet
 JNIEXPORT void JNICALL Java_com_multicorn_opensurf_Opensurf_surflib_1surfDes
   (JNIEnv *, jclass, jlong, jlong, jlong, jboolean);
 
+/*
+ * Class:     com_multicorn_opensurf_Opensurf
+ * Method:    surflib_surfDetDes
+ * Signature: (JJJIIIFZ)V
+ */
+JNIEXPORT void JNICALL Java_com_multicorn_opensurf_Opensurf_surflib_1surfDetDes
+  (JNIEnv *, jclass, jlong, jlong, jlong, jint, jint, jint, jfloat, jboolean);
+
+
 #ifdef __cplusplus
 }
 #endif

@@ -77,6 +77,35 @@ JNIEXPORT void JNICALL Java_com_multicorn_opensurf_Opensurf_surflib_1surfDes
   *descriptorMat = *descriptors;
 }
 
+JNIEXPORT void JNICALL Java_com_multicorn_opensurf_Opensurf_surflib_1surfDetDes
+  (JNIEnv *, jclass, jlong imageMatAddr, jlong keypointMatAddr, jlong descriptorsAddr, jint octaves,
+    jint intervals, jint init_sample, jfloat thres, jboolean upright)
+{
+
+  cv::Mat* imageMat = (cv::Mat*)imageMatAddr;
+  cv::Mat* keypointMat = (cv::Mat*)keypointMatAddr;
+  cv::Mat* descriptorMat = (cv::Mat*)descriptorsAddr;
+  IplImage img = *imageMat;
+  IpVec ipts;
+
+  surfDetDes(&img, ipts, upright, octaves, intervals, init_sample, thres);
+
+  std::vector<cv::KeyPoint> keypoints;
+  cv::Mat* descriptors = new cv::Mat(ipts.size(), 64, cv::DataType<float>::type);
+  for (int i = 0; i < ipts.size(); i++) {
+    Ipoint ipoint = ipts[i];
+    cv::KeyPoint* keypoint = new cv::KeyPoint(ipoint.x, ipoint.y, ipoint.scale, ipoint.orientation);
+    keypoints.push_back(*keypoint);
+    for (int j = 0; j < 64; j++) {
+      descriptors->at<float>(i, j) = ipoint.descriptor[j];
+    }
+  }
+
+  vector_KeyPoint_to_Mat(keypoints, *keypointMat);
+  *descriptorMat = *descriptors;
+}
+
+
 void Mat_to_vector_KeyPoint(cv::Mat& mat, std::vector<cv::KeyPoint>& v_kp) {
   //source: http://stackoverflow.com/questions/14898540/converting-mat-to-keypoint
 

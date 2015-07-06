@@ -90,9 +90,26 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfKeyPoint;
 import org.opencv.highgui.Highgui;
 
+MatOfKeyPoint keyPoints;
+Mat descriptors;
+
+/*
+ * detect, then describe
+*/
+
 Mat imageMat = Highgui.imread(getClass().getResource("/test.jpg").getPath());
 
-MatOfKeyPoint keyPoints = Opensurf.detect(imageMat, 5, 4, 2, 0.0004f);
+keyPoints = Opensurf.detect(imageMat, 5, 4, 2, 0.0004f);
 
-Mat descriptors = Opensurf.describe(imageMat, keyPoints, true);
+descriptors = Opensurf.describe(imageMat, keyPoints, true);
+
+/*
+ * detect & describe
+*/
+
+keyPoints = new MatOfKeyPoint();
+descriptors = new Mat();
+
+Opensurf.detectDescribe(imageMat, keyPoints, descriptors, 5, 4, 2, 0.0004f, true);
+
 </pre>

@@ -57,6 +57,26 @@ public class Opensurf {
     return descriptors;
   }
 
+  /**
+   * Populates given MatOfKeyPoint and Mat with Keypoints and Descriptors
+   *
+   * @param imageMat
+   * @param keyPoints
+   * @param descriptors
+   * @param octaves
+   * @param intervals
+   * @param init_sample
+   * @param thres
+   * @param upright
+   */
+  public static void detectDescribe(Mat imageMat, MatOfKeyPoint keyPoints, Mat descriptors,
+                                    int octaves, int intervals, int init_sample, float thres,
+                                    boolean upright) {
+
+    surflib_surfDetDes(imageMat.getNativeObjAddr(), keyPoints.getNativeObjAddr(),
+                       descriptors.getNativeObjAddr(), octaves, intervals, init_sample, thres,
+                       upright);
+  }
 
   public static native void surflib_surfDet(long imageMatAddr, long keypointsAddr,
                                             int octaves, int intervals,
@@ -65,4 +85,7 @@ public class Opensurf {
   public static native void surflib_surfDes(long imageMatAddr, long keypointsAddr,
                                             long descriptorsAddr, boolean upright);
 
+  public static native void surflib_surfDetDes(long imageMatAddr, long keypointsAddr,
+                                               long descriptorsAddr, int octaves, int intervals,
+                                               int init_sample, float thres, boolean upright);
 }
