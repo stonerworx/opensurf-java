@@ -13,3 +13,6 @@ RUN cp /home/opensurf-java/libs/native/libopensurf_java.so /usr/lib
 
 #copy java library
 RUN cp /home/opensurf-java/build/libs/opensurf-1.0.jar /home/javalibs/opensurf-1.0.jar
+
+# clean up after yourself
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
